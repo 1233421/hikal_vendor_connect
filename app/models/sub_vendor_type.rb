@@ -1,0 +1,2 @@
+class SubVendorType < ApplicationRecord
+end

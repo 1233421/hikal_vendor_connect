@@ -1,0 +1,18 @@
+<div id="<%= id %>" class="col-7 <%= is_present ? '' : 'd-none' %>">
+  <div class="form-group">
+    <%= f.label field, class: "required" %>
+    <div class="d-flex">
+      <% if file.attached? %>
+	      <div class="col-6 image-view image-attached">
+	      	<div>
+			      <%= image_tag url_for(file), style: "width: 100px;height: 100px" %>
+				    <a href="javascript:void(0)" onclick="$(this).closest('.image-view').removeClass('image-attached')" class="btn btn-danger">Change</a>
+	      	</div>
+			  </div>
+			<% end %>
+      <div class="col-6 image-field">
+        <%= f.file_field field, class: "form-control", required: true, disabled: !is_present %>
+      </div>
+    </div>
+  </div>
+</div>

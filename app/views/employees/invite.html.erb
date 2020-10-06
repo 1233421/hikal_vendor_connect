@@ -1,0 +1,42 @@
+<%= render layout: "layouts/employees" do %>
+
+  <div class="page-header pt-3 pb-2">
+    <h2>Invite New Vendor</h2>
+  </div>
+  
+  <div class="col-6 py-3">
+    <%= form_for(resource, as: resource_name, url: employees_invite_path) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :email, class: "required" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :first_name, class: "required" %>
+        <%= f.text_field :first_name, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :last_name, class: "required" %>
+        <%= f.text_field :last_name, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :division, class: "required" %>
+        <%= f.select :division, [['select', ''], ['Div', 1]], {}, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :site_name, class: "required" %>
+        <%= f.text_field :site_name, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.hidden_field :role, value: "vendor" %>
+        <%= f.submit "Create", class: "btn btn-primary px-5 p-2" %>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>

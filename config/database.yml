@@ -1,0 +1,21 @@
+development:
+ adapter: postgresql
+ encoding: utf8
+ database: hikal
+ pool: 5
+ username: murthi
+ password: password
+ host: localhost
+ prepared_statements: false
+
+test: &test
+ adapter: postgresql
+ encoding: utf8
+ database: hikal_test
+ pool: 5
+ username: murthi
+ password: password
+ host: localhost
+
+production:
+ prepared_statements: false

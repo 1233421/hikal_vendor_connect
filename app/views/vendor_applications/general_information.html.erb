@@ -1,0 +1,173 @@
+<%= render layout: "layouts/vendors" do %>
+
+  <div class="page-header pt-3 pb-2">
+    <h2 class="d-flex justify-content-between">
+      General Information
+      <div>
+        <%= link_to 'Prev', previous_wizard_path, class: "btn btn-default" %>
+        <%= link_to 'Next', next_wizard_path, class: "btn btn-primary" %>
+      </div>
+    </h2>
+  </div>
+  
+  <div class="py-3 px-2">
+    <%= form_for(@form_data, url: wizard_path, html: { method: :put, novalidate: true, data: { validate: true } }) do |f| %>
+      <div class="form-group">
+        <%= f.label :vendor_type, class: "required" %>
+        <%= f.select :vendor_type, [["Vendor 1", 1], ["Vendor 2", 2]], {}, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :vendor_sub_type, class: "required" %>
+        <%= f.select :vendor_sub_type, [["Vendor 1", 1], ["Vendor 2", 2]], {}, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :nature_of_the_entity, class: "required" %>
+        <%= f.select :nature_of_the_entity, [["Entity 1", 1], ["Entity 2", 2]], {}, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :annual_sales, class: "required" %>
+        <%= f.text_field :annual_sales, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :list_of_products, class: "required" %>
+        <%= f.text_field :list_of_products, class: "form-control", required: true %>
+      </div>
+      
+      <h4 class="h4 pt-3 mb-0">Correspondence Address</h4>
+      <hr class="mt-2"/>
+      <div class="form-group">
+        <%= f.label :correspondence_address_line_1, "Address Line 1", class: "required" %>
+        <%= f.text_field :correspondence_address_line_1, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :correspondence_address_line_2, "Address Line 2", class: "required" %>
+        <%= f.text_field :correspondence_address_line_2, class: "form-control", required: true %>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :correspondence_city, "City", class: "required" %>
+            <%= f.text_field :correspondence_city, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :correspondence_state, "State", class: "required" %>
+            <%= f.text_field :correspondence_state, class: "form-control", required: true %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :correspondence_country, "Country", class: "required" %>
+            <%= f.text_field :correspondence_country, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :correspondence_pin_code, "Pin Code", class: "required" %>
+            <%= f.text_field :correspondence_pin_code, class: "form-control", required: true , data: { "rule-pin" => true }%>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="h4 pt-3 mb-0">Shipping Address</h4>
+      <hr class="mt-2"/>
+      <div class="form-group">
+        <%= f.label :shipping_address_line_1, "Address Line 1", class: "required" %>
+        <%= f.text_field :shipping_address_line_1, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :shipping_address_line_2, "Address Line 2", class: "required" %>
+        <%= f.text_field :shipping_address_line_2, class: "form-control", required: true %>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :shipping_city, "City", class: "required" %>
+            <%= f.text_field :shipping_city, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :shipping_state, "State", class: "required" %>
+            <%= f.text_field :shipping_state, class: "form-control", required: true %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :shipping_country, "Country", class: "required" %>
+            <%= f.text_field :shipping_country, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :shipping_pin_code, "Pin Code", class: "required" %>
+            <%= f.text_field :shipping_pin_code, class: "form-control", required: true, data: { "rule-pin" => true } %>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="h4 pt-3 mb-0">Registered/Official Address</h4>
+      <hr class="mt-2"/>
+      <div class="form-group">
+        <%= f.label :office_address_line_1, "Address Line 1", class: "required" %>
+        <%= f.text_field :office_address_line_1, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :office_address_line_2, "Address Line 2", class: "required" %>
+        <%= f.text_field :office_address_line_2, class: "form-control", required: true %>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :office_city, "City", class: "required" %>
+            <%= f.text_field :office_city, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :office_state, "State", class: "required" %>
+            <%= f.text_field :office_state, class: "form-control", required: true %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :office_country, "Country", class: "required" %>
+            <%= f.text_field :office_country, class: "form-control", required: true %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :office_pin_code, "Pin Code", class: "required" %>
+            <%= f.text_field :office_pin_code, class: "form-control", required: true, data: { "rule-pin" => true } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :vendor_application_id %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "Submit", class: "btn btn-primary px-5 p-2" %>
+      </div>
+    <% end %>
+  </div>  
+<% end %>

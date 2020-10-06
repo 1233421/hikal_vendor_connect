@@ -1,0 +1,187 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap
+ *= require viewer
+ *= require_self
+ */
+
+
+ @font-face {
+   font-family: 'icomoon';
+   src: font-url('icomoon.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+ }
+
+
+body, html{
+  background-color: #21D4FD;
+  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-widget {
+  position: absolute;
+  background: #fff;
+  width: 460px;
+  height: auto;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 25px;
+  border-radius: 15px;
+  .nav-pills {
+    border-bottom: 0px solid #009688;
+  }
+  .nav-pills .nav-item{
+    width: 50%;
+  }
+  .nav-pills .nav-link{
+    color: #040f4a;
+    text-align: center;
+    padding: 1rem;
+  }
+  .nav-pills .nav-link{
+    background: #eee;
+    border-color: #eee;
+  }
+  .nav-pills .nav-link.active{
+    border-color: #009688;
+    background: #009688;
+    color: #fff;
+  }
+  .logo{
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(16,77,127);
+    text-transform: uppercase;
+  }  
+}
+
+.content{
+  min-height: 600px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 50px #18204c1c;
+  width: 100%;
+  overflow: hidden;
+  aside {
+    background: #ecf9fb;
+    height: 100vh;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    nav{
+      ul{
+        margin-right: -15px;
+        .list-group-item{
+          background: #ecf9fb;
+          border-width: 0px;
+          a{
+            color: #104d7f;
+            text-decoration: none;
+          }
+          &.active{
+            background: #fff !important;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border: 0px;
+            a{
+              color: #104d7f;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  .logo{
+    font-size: 36px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(16,77,127);
+    text-transform: uppercase;
+  }  
+}
+
+.page-header{
+  border-bottom: 2px solid #eaf0f1;
+  h2{
+    color: #071f31;
+    margin-bottom: 0px;
+    font-size: 24px;
+  }
+}
+
+.required:after {
+  content:" *";
+  color: red;
+}
+
+.modal-dialog.modal-xlg {
+  max-width: calc(100% - 20px);
+  left: 10px;
+}
+
+label.is-invalid {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.image-view{
+  display: none;
+}
+
+.image-view.image-attached{
+  display: inherit;
+  cursor: pointer;
+}
+
+.image-view.image-attached:hover img{
+  opacity: 0.5;
+}
+
+#application-review img:hover{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.image-attached + .image-field{
+  display: none;
+}
+
+// .form-group{
+//   position: relative;
+//   margin-bottom: 1.5rem;
+// }
+// 
+// .form-control{
+//   padding: 0.75rem 0.75rem;
+//   height: auto;
+// }
+// 
+// label{
+//   font-size: 13px;
+//   position: absolute;
+//   left: 15px;
+//   display: inline-block;
+//   background: #fff;
+//   padding: 5px 15px;
+//   top: -15px;
+// }

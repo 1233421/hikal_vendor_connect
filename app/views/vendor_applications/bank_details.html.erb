@@ -1,0 +1,66 @@
+<%= render layout: "layouts/vendors" do %>
+
+  <div class="page-header pt-3 pb-2">
+    <h2 class="d-flex justify-content-between">
+      Bank Details
+      <div>
+        <%= link_to 'Prev', previous_wizard_path, class: "btn btn-default" %>
+      </div>
+    </h2>
+  </div>
+  
+  <div class="py-3 px-2">
+    <%= form_for(@form_data, url: wizard_path, html: { method: :put, novalidate: true, data: {validate: true} }) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :account_number, class: "required" %>
+        <%= f.text_field :account_number, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :repeat_account_number, class: "required" %>
+        <%= f.text_field :repeat_account_number, class: "form-control", required: true, data: { "rule-equalto" => "#bank_detail_account_number", "msg-equalto"=> "Account Number and Repeat account number should be the same" } %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :account_type, class: "required" %>
+        <%= f.text_field :account_type, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :bank_name, class: "required" %>
+        <%= f.text_field :bank_name, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :branch_name, class: "required" %>
+        <%= f.text_field :branch_name, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :bank_code, class: "required" %>
+        <%= f.text_field :bank_code, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :ifsc_code, class: "required" %>
+        <%= f.text_field :ifsc_code, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :bank_address, class: "required" %>
+        <%= f.text_field :bank_address, class: "form-control", required: true %>
+      </div>
+
+      <div class="row">
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.canceled_cheque, field: :canceled_cheque, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.hidden_field :vendor_application_id %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "Submit", class: "btn btn-primary px-5 p-2" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

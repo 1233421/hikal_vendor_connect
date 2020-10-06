@@ -1,0 +1,45 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_tax_no: MyString
+  service_tax_no_doc: MyString
+  esic_no: MyString
+  esic_no_doc: MyString
+  vat_tin_no: MyString
+  vat_tin_no_doc: MyString
+  cst_tin_no: MyString
+  cst_tin_no_doc: MyString
+  pf_no: MyString
+  pf_no_doc: MyString
+  labour_license_no: MyString
+  labour_license_no_doc: MyString
+  is_covered_under_msme: MyString
+  boolean: MyString
+  is_covered_under_msme_doc: MyString
+  msme_registered_date: 2020-10-05
+  msme_registered_date_doc: MyString
+  msme_type: MyString
+  msme_type_doc: MyString
+  ca_certificate: MyString
+
+two:
+  service_tax_no: MyString
+  service_tax_no_doc: MyString
+  esic_no: MyString
+  esic_no_doc: MyString
+  vat_tin_no: MyString
+  vat_tin_no_doc: MyString
+  cst_tin_no: MyString
+  cst_tin_no_doc: MyString
+  pf_no: MyString
+  pf_no_doc: MyString
+  labour_license_no: MyString
+  labour_license_no_doc: MyString
+  is_covered_under_msme: MyString
+  boolean: MyString
+  is_covered_under_msme_doc: MyString
+  msme_registered_date: 2020-10-05
+  msme_registered_date_doc: MyString
+  msme_type: MyString
+  msme_type_doc: MyString
+  ca_certificate: MyString

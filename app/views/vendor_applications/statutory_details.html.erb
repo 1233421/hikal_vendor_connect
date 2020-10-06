@@ -1,0 +1,102 @@
+<%= render layout: "layouts/vendors" do %>
+
+  <div class="page-header pt-3 pb-2">
+    <h2 class="d-flex justify-content-between">
+      Statutory Data
+      <div>
+        <%= link_to 'Prev', previous_wizard_path, class: "btn btn-default" %>
+        <%= link_to 'Next', next_wizard_path, class: "btn btn-primary" %>
+      </div>
+    </h2>
+  </div>
+  
+  <div class="py-3 px-2">
+    <%= form_for(@form_data, url: wizard_path, html: { method: :put, novalidate: true, data: { validate: true } }) do |f| %>
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :service_tax_no, class: "required" %>
+            <%= f.text_field :service_tax_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.service_tax_no_doc, field: :service_tax_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :esic_no, "ESIC No", class: "required" %>
+            <%= f.text_field :esic_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.esic_no_doc, field: :esic_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :vat_tin_no, "VAT TIN No", class: "required" %>
+            <%= f.text_field :vat_tin_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.vat_tin_no_doc, field: :vat_tin_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :cst_tin_no, "CST TIN No", class: "required" %>
+            <%= f.text_field :cst_tin_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.cst_tin_no_doc, field: :cst_tin_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :pf_no, "PF No", class: "required" %>
+            <%= f.text_field :pf_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.pf_no_doc, field: :pf_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="row">
+        <div class="col-5">
+          <div class="form-group">
+            <%= f.label :labour_license_no, "Labour License No", class: "required" %>
+            <%= f.text_field :labour_license_no, class: "form-control", required: true %>
+          </div>
+        </div>
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.labour_license_no_doc, field: :labour_license_no_doc, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :is_covered_under_msme, "is covered under MSME", class: "required" %>
+        <%= f.select :is_covered_under_msme, CompanyInformation::DROPDOWN_OPTIONS, {}, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :msme_registered_date, "MSME Registered date", class: "required" %>
+        <%= f.date_field :msme_registered_date, class: "form-control", required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :msme_type,  "MSME type", class: "required" %>
+        <%= f.text_field :msme_type, class: "form-control", required: true %>
+      </div>
+      
+      <div class="row">
+        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.ca_certificate, field: :ca_certificate, is_present: true, id: "company_presentation_uploader" } %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.hidden_field :vendor_application_id %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "Submit", class: "btn btn-primary px-5 p-2" %>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>

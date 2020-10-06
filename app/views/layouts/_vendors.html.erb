@@ -1,0 +1,29 @@
+<div class="container my-3 content">
+  <div class="row">
+    <aside class="col-3">
+      <h1 class="logo my-5">Hikal</h1>
+      <nav>
+        <ul class="ml-0 pl-3 list-unstyled list-group">
+          <li class="list-group-item <%= current_page?(vendors_path) ? "active" : "" %>">
+            <a href="<%= vendors_path %>">Home</a>
+          </li>
+          
+          <li class="list-group-item <%= current_page?('/vendor_applications/welcome') ? "active" : "" %>">
+            <a href="/vendor_applications/welcome">Application</a>
+          </li>
+          
+          <li class="list-group-item">
+            <a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="col-9">
+      <div id="main-content">
+        <%= render partial: "layouts/error_flash" %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key_contact: 1
+  name: MyString
+  designation: MyString
+  landline: MyString
+  mobile: MyString
+  email: MyString
+  pan_card: MyString
+  aadar_card: MyString
+  vendor_application: one
+
+two:
+  key_contact: 1
+  name: MyString
+  designation: MyString
+  landline: MyString
+  mobile: MyString
+  email: MyString
+  pan_card: MyString
+  aadar_card: MyString
+  vendor_application: two

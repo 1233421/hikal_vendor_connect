@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pan_card: MyString
+  pan_card_doc: MyString
+  is_organization_registered: false
+  is_gst_exempted: MyString
+  is_turonover_below_par: MyString
+  vendor_application: one
+  state: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  gst_no: MyString
+  pin_code: MyString
+  registered_email: MyString
+  gst_certificate: MyString
+
+two:
+  pan_card: MyString
+  pan_card_doc: MyString
+  is_organization_registered: false
+  is_gst_exempted: MyString
+  is_turonover_below_par: MyString
+  vendor_application: two
+  state: MyString
+  address_line_1: MyString
+  address_line_2: MyString
+  gst_no: MyString
+  pin_code: MyString
+  registered_email: MyString
+  gst_certificate: MyString

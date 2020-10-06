@@ -1,0 +1,24 @@
+<%= render layout: "layouts/vendors" do %>
+
+	<div id="submit-content">
+	  <div class="page-header pt-3 pb-2">
+	    <h2>Submit</h2>
+	  </div>
+	  
+	  <div class="py-5 my-5 text-center" id="page-content">
+	    <h4 class="mb-5">Submit for Approval</h4>
+	    <a href="/vendors/submit" class="btn btn-success px-5" data-remote="true">Submit</a>
+	  </div>
+	</div>
+
+	<div id="thank-content" class="d-none">
+		<div class="page-header pt-3 pb-2">
+	    <h2>Thank you</h2>
+	  </div>
+	  <div class="py-5 my-5 text-center" id="thank-you">
+	    <h4>Thank you for Applying, we will get back to you soon!</h4>
+    	<a href="/vendors">Back to Home</a>
+	  </div>
+	</div>
+
+<% end %>
