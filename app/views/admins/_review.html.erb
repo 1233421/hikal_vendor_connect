@@ -1,0 +1,504 @@
+<div class="row">
+	<div class="col-6">
+
+		<div class="card bg-light">
+			<div class="card-header">
+				<h4>General Information</h4>
+			</div>
+
+			<div class="card-body">
+				<% general_info = @vendor_application.general_information %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Vendor Type</th>
+							<td><%= general_info.vendor_type %></td>
+						</tr>
+						<tr>
+							<th>Vendor Sub Type</th>
+							<td><%= general_info.vendor_sub_type %></td>
+						</tr>
+						<tr>
+							<th>Nature of Entiry</th>
+							<td><%= general_info.nature_of_the_entity %></td>
+						</tr>
+						<tr>
+							<th>Annual Sales</th>
+							<td><%= general_info.annual_sales %></td>
+						</tr>
+						<tr>
+							<th>List of sales</th>
+							<td><%= general_info.list_of_products %></td>
+						</tr>
+
+						<tr>
+							<th>
+								Correspondence Address
+							</th>
+							<td>
+								<%= general_info.correspondence_address_line_1 %>,<br/>
+								<%= general_info.correspondence_address_line_2 %>,<br/>
+								<%= general_info.correspondence_city %>, <%= general_info.correspondence_state %>,<br/>
+								<%= general_info.correspondence_country %>, <%= general_info.correspondence_pin_code %>
+							</td>
+						</tr>
+
+						<tr>
+							<th>
+								Shipping Address
+							</th>
+							<td>
+								<%= general_info.shipping_address_line_1 %>,<br/>
+								<%= general_info.shipping_address_line_2 %>,<br/>
+								<%= general_info.shipping_city %>, <%= general_info.shipping_state %>,<br/>
+								<%= general_info.shipping_country %>, <%= general_info.shipping_pin_code %>
+							</td>
+						</tr>
+
+						<tr>
+							<th>
+								Registered/Official Address
+							</th>
+							<td>
+								<%= general_info.office_address_line_1 %>,<br/>
+								<%= general_info.office_address_line_2 %>,<br/>
+								<%= general_info.office_city %>, <%= general_info.office_state %>,<br/>
+								<%= general_info.office_country %>, <%= general_info.office_pin_code %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+		<div class="card bg-light">
+			<div class="card-header">
+				<h4>Management Information</h4>
+			</div>
+
+			<div class="card-body">
+				<% management_information = @vendor_application.management_information %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Key Contact</th>
+							<td><%= management_information.key_contact %></td>
+						</tr>
+						<tr>
+							<th>Name</th>
+							<td><%= management_information.name %></td>
+						</tr>
+						<tr>
+							<th>Designation</th>
+							<td><%= management_information.mobile %></td>
+						</tr>
+						<tr>
+							<th>Landline</th>
+							<td><%= management_information.landline %></td>
+						</tr>
+						<tr>
+							<th>Mobile</th>
+							<td><%= management_information.email %></td>
+						</tr>
+						<tr>
+							<th>Pan Card</th>
+							<td><%= management_information.pan_card %></td>
+						</tr>
+						<tr>
+							<th>Aadar Card</th>
+							<td><%= management_information.aadar_card %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="card bg-light">
+			<div class="card-header">
+				<h4>GST Information</h4>
+			</div>
+
+			<div class="card-body">
+				<% gst_info = @vendor_application.gst_info %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>PAN card</th>
+							<td><%= gst_info.pan_card %></td>
+							<td><%= image_tag url_for(gst_info.pan_card_doc), style: "width: 200px;height: 200px;" %></td>
+						</tr>
+						<tr>
+							<th>Is your organization registered with GSTN</th>
+							<td colspan="2"><%= GstInfo::DROPDOWN_OPTIONS.get_by_key_from_2d_array(gst_info.is_organization_registered) %></td>
+						</tr>
+						<tr>
+							<th>Is your business category exempted from GSTN</th>
+							<td colspan="2"><%= GstInfo::DROPDOWN_OPTIONS.get_by_key_from_2d_array(gst_info.is_gst_exempted) %></td>
+						</tr>
+						<tr>
+							<th>Is annual turnover below Rs. 20 lakh</th>
+							<td colspan="2"><%= GstInfo::DROPDOWN_OPTIONS.get_by_key_from_2d_array(gst_info.is_turonover_below_par) %></td>
+						</tr>
+
+						<% if gst_info.is_gst_number_present? %>
+							<tr>
+								<th>GST No</th>
+								<td colspan="2"><%= gst_info.gst_no %></td>
+							</tr>
+							<tr>
+								<th>Registered Email</th>
+								<td colspan="2"><%= gst_info.registered_email %></td>
+							</tr>
+							<tr>
+								<th>Address</th>
+								<td colspan="2">
+									<%= gst_info.address_line_1 %>,<br/>
+									<%= gst_info.address_line_2 %>,<br/>
+									<%= gst_info.state %>,<br/>
+									<%= gst_info.pin_code %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="card bg-light">
+			<div class="card-header">
+				<h4>Bank Details</h4>
+			</div>
+			<div class="card-body">
+				<% bank_detail = @vendor_application.bank_detail %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Acc No</th>
+							<td><%= bank_detail.account_number %></td>
+						</tr>
+						<tr>
+							<th>Acc Type</th>
+							<td><%= bank_detail.account_type %></td>
+						</tr>
+						<tr>
+							<th>Bank Name</th>
+							<td><%= bank_detail.bank_name %></td>
+						</tr>
+						<tr>
+							<th>Bank Code</th>
+							<td><%= bank_detail.bank_code %></td>
+						</tr>
+						<tr>
+							<th>Branch Name</th>
+							<td><%= bank_detail.branch_name %></td>
+						</tr>
+						<tr>
+							<th>IFSC code</th>
+							<td><%= bank_detail.ifsc_code %></td>
+						</tr>
+						<tr>
+							<th>Bank Address</th>
+							<td><%= bank_detail.bank_address %></td>
+						</tr>
+						<tr>
+							<th>Cancelled Cheque</th>
+							<td><%= image_tag( url_for(bank_detail.canceled_cheque), style: "width: 200px; height: 200px;" ) %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+		</div>
+	</div>
+
+
+	<div class="col-6">
+		<div class="card bg-light">
+			<div class="card-header">
+				<h4>Company Information</h4>
+			</div>
+		
+			<div class="card-body">
+				<% company_information = @vendor_application.company_information %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Company presentation</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.company_presentation) %></td>
+							<td>
+								<% if company_information.company_presentation_doc.attached? %>
+									<%= image_tag url_for(company_information.company_presentation_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Credit rating</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.credit_rating) %></td>
+							<td>
+								<% if company_information.credit_rating_doc.attached? %>
+									<%= image_tag url_for(company_information.credit_rating_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Product catelogue</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.product_catelogue) %></td>
+							<td>
+								<% if company_information.product_catelogue_doc.attached? %>
+									<%= image_tag url_for(company_information.product_catelogue_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Manufactoring facilities</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.manufactoring_facilities) %></td>
+							<td>
+								<% if company_information.manufactoring_facilities_doc.attached? %>
+									<%= image_tag url_for(company_information.manufactoring_facilities_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Quality assurance plan</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.quality_assurance_plan) %></td>
+							<td>
+								<% if company_information.quality_assurance_plan_doc.attached? %>
+									<%= image_tag url_for(company_information.quality_assurance_plan_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>ISO 9001</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.iso_9001) %></td>
+							<td>
+								<% if company_information.iso_9001_doc.attached? %>
+									<%= image_tag url_for(company_information.iso_9001_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>ISO 14000</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.iso_14000) %></td>
+							<td>
+								<% if company_information.iso_14000_doc.attached? %>
+									<%= image_tag url_for(company_information.iso_14000_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>OHSAS</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.ohsas) %></td>
+							<td>
+								<% if company_information.ohsas_doc.attached? %>
+									<%= image_tag url_for(company_information.ohsas_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>ISO 27000</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.iso_27000) %></td>
+							<td>
+								<% if company_information.iso_27000_doc.attached? %>
+									<%= image_tag url_for(company_information.iso_27000_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Indian boiler regulations</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.indian_boiler_regulations) %></td>
+							<td>
+								<% if company_information.indian_boiler_regulations_doc.attached? %>
+									<%= image_tag url_for(company_information.indian_boiler_regulations_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>American Society of Mechanical Engineers</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.asme) %></td>
+							<td>
+								<% if company_information.asme_doc.attached? %>
+									<%= image_tag url_for(company_information.asme_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Pressure equipment directive</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.pressure_equipment_directive) %></td>
+							<td>
+								<% if company_information.pressure_equipment_directive_doc.attached? %>
+									<%= image_tag url_for(company_information.pressure_equipment_directive_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Underwriters Laboratories</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.underwriters_labs) %></td>
+							<td>
+								<% if company_information.underwriters_labs_doc.attached? %>
+									<%= image_tag url_for(company_information.underwriters_labs_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Customer Approval Certificate</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.customer_approval) %></td>
+							<td>
+								<% if company_information.customer_approval_doc.attached? %>
+									<%= image_tag url_for(company_information.customer_approval_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Sample Test Certificate</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.incorporation_certificate) %></td>
+							<td>
+								<% if company_information.incorporation_certificate_doc.attached? %>
+									<%= image_tag url_for(company_information.incorporation_certificate_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Customer Reference List</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.customer_reference) %></td>
+							<td>
+								<% if company_information.customer_reference_doc.attached? %>
+									<%= image_tag url_for(company_information.customer_reference_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Certificate of Incorporation</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.incorporation_certificate) %></td>
+							<td>
+								<% if company_information.incorporation_certificate_doc.attached? %>
+									<%= image_tag url_for(company_information.incorporation_certificate_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Legal cases</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.legal_cases) %></td>
+							<td>
+								<% if company_information.legal_cases_doc.attached? %>
+									<%= image_tag url_for(company_information.legal_cases_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Annual turnover</th>
+							<td><%= CompanyInformation::DROPDOWN_OPTIONS.get_by_key_from_2d_array(company_information.annual_turnover) %></td>
+							<td>
+								<% if company_information.annual_turnover_doc.attached? %>
+									<%= image_tag url_for(company_information.annual_turnover_doc), style: "width: 200px; height: 200px"%>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="card bg-light">
+			<div class="card-header">
+		  	<h4>Statutory Details</h4>
+			</div>
+
+			<div class="card-body">
+				<% statutory_detail = @vendor_application.statutory_detail %>
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Service Tax No</th>
+							<td><%= statutory_detail.service_tax_no %></td>
+							<td>
+								<% if statutory_detail.service_tax_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.service_tax_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>ESIC NO</th>
+							<td><%= statutory_detail.esic_no %></td>
+							<td>
+								<% if statutory_detail.esic_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.esic_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>VAT TIN No</th>
+							<td><%= statutory_detail.vat_tin_no %></td>
+							<td>
+								<% if statutory_detail.vat_tin_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.vat_tin_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>CST TIN No</th>
+							<td><%= statutory_detail.cst_tin_no %></td>
+							<td>
+								<% if statutory_detail.cst_tin_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.cst_tin_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>PF No</th>
+							<td><%= statutory_detail.pf_no %></td>
+							<td>
+								<% if statutory_detail.pf_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.pf_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>Labout License</th>
+							<td><%= statutory_detail.labour_license_no %></td>
+							<td>
+								<% if statutory_detail.labour_license_no_doc.attached? %>
+									<%= image_tag url_for(statutory_detail.labour_license_no_doc), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th>is covered under MSME</th>
+							<td colspan="2">
+								statutory_detail.is_covered_under_msme
+							</td>
+						</tr>
+						<tr>
+							<th>MSME registered date</th>
+							<td colspan="2">
+								statutory_detail.msme_registered_date
+							</td>
+						</tr>
+						<tr>
+							<th>MSME Type</th>
+							<td colspan="2">
+								statutory_detail.msme_type
+							</td>
+						</tr>
+						<tr>
+							<th>CA certificate</th>
+							<td colspan="2">
+								<% if statutory_detail.ca_certificate.attached? %>
+									<%= image_tag url_for(statutory_detail.ca_certificate), style: "width: 200px;height: 200px;" %>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="text-center p-4">
+  <button type="button" class="btn btn-danger btn-lg px-5" onclick="rejectWithReasonByAdmin('<%= params[:id] %>')">Reject</button>
+  <button type="button" class="btn btn-primary btn-lg px-5" onclick="approveByAdmin('<%= params[:id] %>')">Approve</button>
+</div>
+
+<script type="text/javascript">
+	$("#application-review img").viewer();
+</script>

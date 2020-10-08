@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  
+  layout "employees"
   before_action :authenticate_employee
   
   def index
@@ -20,6 +20,21 @@ class EmployeesController < ApplicationController
     else
       redirect_to employees_invite_path, error: user.errors.full_messages.concat(", ")
     end
+  end
+
+  def reject
+    @vendor_application = VendorApplication.where(id: params[:id]).first
+    @vendor_application.rejections.create(reason: params[:reason])
+    @vendor_application.update({
+      is_submitted_for_approval: false
+    })
+  end
+
+  def approve
+    @vendor_application = VendorApplication.where(id: params[:id]).first
+    @vendor_application.update({
+      is_approved_by_first_level: true
+    })
   end
   
   private

@@ -15,9 +15,14 @@ Rails.application.routes.draw do
   get "/employees", to: "employees#index"
   get "/employees/invite", to: "employees#invite"
   post "/employees/invite", to: "employees#create_vendor"
+  post "/employees/reject", to: "employees#reject"
+  post "/employees/approve", to: "employees#approve"
   get "/send_mail", to: "employees#send_mail"
   
   get "/admins", to: "admins#index"
+  get "/admins/view_approval/:id", to: "admins#view_approval"
+  post "/admins/reject", to: "admins#reject"
+  post "/admins/approve", to: "admins#approve"
   
   resources :vendor_applications
   root to: "home#index"

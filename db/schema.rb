@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_120427) do
+ActiveRecord::Schema.define(version: 2020_10_07_041841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,14 @@ ActiveRecord::Schema.define(version: 2020_10_05_120427) do
     t.index ["vendor_application_id"], name: "index_management_informations_on_vendor_application_id"
   end
 
+  create_table "rejections", force: :cascade do |t|
+    t.text "reason"
+    t.bigint "vendor_application_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vendor_application_id"], name: "index_rejections_on_vendor_application_id"
+  end
+
   create_table "statutory_details", force: :cascade do |t|
     t.string "service_tax_no"
     t.string "service_tax_no_doc"
@@ -223,11 +231,15 @@ ActiveRecord::Schema.define(version: 2020_10_05_120427) do
   create_table "vendor_applications", force: :cascade do |t|
     t.bigint "user_id"
     t.string "current_step"
-    t.boolean "is_submitted_for_approval"
-    t.boolean "is_approved_by_first_level"
-    t.boolean "is_approved_by_second_level"
+    t.boolean "is_submitted_for_approval", default: false
+    t.boolean "is_approved_by_first_level", default: false
+    t.boolean "is_approved_by_second_level", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "rejected_at"
+    t.text "reason"
+    t.integer "number_of_rejection"
+    t.datetime "submitted_at"
     t.index ["user_id"], name: "index_vendor_applications_on_user_id"
   end
 
@@ -242,5 +254,6 @@ ActiveRecord::Schema.define(version: 2020_10_05_120427) do
   add_foreign_key "company_informations", "vendor_applications"
   add_foreign_key "gst_infos", "vendor_applications"
   add_foreign_key "management_informations", "vendor_applications"
+  add_foreign_key "rejections", "vendor_applications"
   add_foreign_key "statutory_details", "vendor_applications"
 end

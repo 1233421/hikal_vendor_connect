@@ -1,68 +1,79 @@
-<div class="login-widget">
+<div class="login-widget signup card">
   
   <h1 class="logo mb-4">Hikal</h1>
-  
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "users/shared/error_messages", resource: resource %>
-    
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-    </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-    </div>
-    
-    <hr/>
-
-    <div class="form-group">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :employee_number %>
-      <%= f.text_field :employee_number, class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :department %>
-      <%= f.select :department, [['select', ''], ['Dept', 1]], {}, class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :division %>
-      <%= f.select :division, [['select', ''], ['Div', 1]], {}, class: "form-control" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :employee_position %>
-      <%= f.text_field :employee_position, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.hidden_field :role, value: "employee" %>
-      <%= f.submit "Sign up", class: "btn btn-primary px-5 p-2" %>
-    </div>
-  <% end %>
-
-  <div class="my-2">
-    <%= link_to "Log in", "/" %>
+  <div class="card-header">
+    <h4>Sign Up</h4>
   </div>
+
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { novalidate: true, data: { validate: true } }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+      
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :email, class: "required" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, class: "required" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, class: "required" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <%= f.label :first_name, class: "required" %>
+            <%= f.text_field :first_name, class: "form-control", required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :last_name, class: "required" %>
+            <%= f.text_field :last_name, class: "form-control", required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :employee_number, class: "required" %>
+            <%= f.text_field :employee_number, class: "form-control", required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :department, class: "required" %>
+            <%= f.select :department, [['select', ''], ['Dept', 1]], {}, class: "form-control", required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :division, class: "required" %>
+            <%= f.select :division, [['select', ''], ['Div', 1]], {}, class: "form-control", required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :employee_position, class: "required" %>
+            <%= f.text_field :employee_position, class: "form-control", required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center mt-3">
+        <%= f.hidden_field :role, value: "employee" %>
+        <%= f.submit "Sign up", class: "btn btn-primary px-5 p-2" %>
+      </div>
+    <% end %>
+    
+    <div class="my-2 text-center">
+      <%= link_to "Log in", "/" %>
+    </div>
+  </div>
+  
 
 </div>

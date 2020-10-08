@@ -1,9 +1,21 @@
-<p id="notice"><%= notice %></p>
+<section class="section">
+  <div class="section-header">
+    <h1>Sub Vendor Type</h1>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @sub_vendor_type.name %>
-</p>
+  <div class="section body">
+  	<div class="card">
+  		<div class="card-body">
+				<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_sub_vendor_type_path(@sub_vendor_type) %> |
-<%= link_to 'Back', sub_vendor_types_path %>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @sub_vendor_type.name %>
+				</p>
+
+				<%= link_to 'Edit', edit_sub_vendor_type_path(@sub_vendor_type) %> |
+				<%= link_to 'Back', sub_vendor_types_path %>
+  		</div>
+  	</div>
+  </div>
+</section>

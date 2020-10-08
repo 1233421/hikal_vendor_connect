@@ -1,218 +1,221 @@
-<%= render layout: "layouts/vendors" do %>
+<section class="section">
+  <div class="section-header">
+    <h1>Company and Product Info</h1>
+  </div>
 
-  <div class="page-header pt-3 pb-2">
-    <h2 class="d-flex justify-content-between">
-      Company and Product Info
-      <div>
-        <%= link_to 'Prev', previous_wizard_path, class: "btn btn-default" %>
-        <%= link_to 'Next', next_wizard_path, class: "btn btn-primary" %>
-      </div>
-    </h2>
-  </div>
+  <div class="section-body">
+    <div class="card p-4">
+
+      <%= render partial: "wizard_header" %>
   
-  <div class="py-3 px-2">
-    <%= form_for(@form_data, url: wizard_path, html: { method: :put, class: "uploadable-form", novalidate: true, data: {validate: true} }) do |f| %>
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :company_presentation, class: "required" %>
-            <%= f.select :company_presentation, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.company_presentation || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'company_presentation_uploader'} %>
+      <%= form_for(@form_data, url: wizard_path, html: { method: :put, class: "uploadable-form", novalidate: true, data: {validate: true} }) do |f| %>
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :company_presentation, class: "required" %>
+              <%= f.select :company_presentation, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.company_presentation || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'company_presentation_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.company_presentation_doc, field: :company_presentation_doc, is_present: @form_data.company_presentation == CompanyInformation::YES, id: "company_presentation_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :credit_rating, class: "required" %>
+              <%= f.select :credit_rating, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.credit_rating || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'credit_rating_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.credit_rating_doc, field: :credit_rating_doc, is_present: @form_data.credit_rating == CompanyInformation::YES, id: "credit_rating_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :product_catelogue, class: "required" %>
+              <%= f.select :product_catelogue, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.product_catelogue || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'product_catelogue_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.product_catelogue_doc, field: :product_catelogue_doc, is_present: @form_data.product_catelogue == CompanyInformation::YES, id: "product_catelogue_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :manufactoring_facilities, class: "required" %>
+              <%= f.select :manufactoring_facilities, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.manufactoring_facilities || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'manufactoring_facilities_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.manufactoring_facilities_doc, field: :manufactoring_facilities_doc, is_present: @form_data.manufactoring_facilities == CompanyInformation::YES, id: "manufactoring_facilities_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :quality_assurance_plan, class: "required" %>
+              <%= f.select :quality_assurance_plan, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.quality_assurance_plan || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'quality_assurance_plan_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.quality_assurance_plan_doc, field: :quality_assurance_plan_doc, is_present: @form_data.quality_assurance_plan == CompanyInformation::YES, id: "quality_assurance_plan_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :iso_9001, "ISO 9001", class: "required" %>
+              <%= f.select :iso_9001, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_9001 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_9001_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_9001_doc, field: :iso_9001_doc, is_present: @form_data.iso_9001 == CompanyInformation::YES, id: "iso_9001_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :iso_14000, "ISO 14000", class: "required" %>
+              <%= f.select :iso_14000, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_14000 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_14000_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_14000_doc, field: :iso_14000_doc, is_present: @form_data.iso_14000 == CompanyInformation::YES, id: "iso_14000_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :ohsas, "OHSAS",class: "required" %>
+              <%= f.select :ohsas, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.ohsas || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'ohsas_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.ohsas_doc, field: :ohsas_doc, is_present: @form_data.ohsas == CompanyInformation::YES, id: "ohsas_uploader" } %>
+        </div>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :iso_27000, "ISO 27000", class: "required" %>
+              <%= f.select :iso_27000, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_27000 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_27000_uploader'} %>
+            </div>
+          </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_27000_doc, field: :iso_27000_doc, is_present: @form_data.iso_27000 == CompanyInformation::YES, id: "iso_27000_uploader" } %>
+          <div id="iso_27000_uploader" class="col-7 <%= @form_data.iso_27000 == CompanyInformation::YES ? '' : 'd-none' %>">
+            <div class="form-group">
+              <%= f.label :iso_27000_doc, class: "required" %>
+              <%= f.file_field :iso_27000_doc, class: "form-control", required: true, disabled: @form_data.iso_27000 != CompanyInformation::YES %>
+            </div>
           </div>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.company_presentation_doc, field: :company_presentation_doc, is_present: @form_data.company_presentation == CompanyInformation::YES, id: "company_presentation_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :credit_rating, class: "required" %>
-            <%= f.select :credit_rating, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.credit_rating || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'credit_rating_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :indian_boiler_regulations, class: "required" %>
+              <%= f.select :indian_boiler_regulations, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.indian_boiler_regulations || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'indian_boiler_regulations_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.indian_boiler_regulations_doc, field: :indian_boiler_regulations_doc, is_present: @form_data.indian_boiler_regulations == CompanyInformation::YES, id: "indian_boiler_regulations_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.credit_rating_doc, field: :credit_rating_doc, is_present: @form_data.credit_rating == CompanyInformation::YES, id: "credit_rating_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :product_catelogue, class: "required" %>
-            <%= f.select :product_catelogue, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.product_catelogue || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'product_catelogue_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :asme, "American Society of Mechanical Engineers", class: "required" %>
+              <%= f.select :asme, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.asme || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'asme_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.asme_doc, field: :asme_doc, is_present: @form_data.asme == CompanyInformation::YES, id: "asme_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.product_catelogue_doc, field: :product_catelogue_doc, is_present: @form_data.product_catelogue == CompanyInformation::YES, id: "product_catelogue_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :manufactoring_facilities, class: "required" %>
-            <%= f.select :manufactoring_facilities, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.manufactoring_facilities || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'manufactoring_facilities_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :pressure_equipment_directive, class: "required" %>
+              <%= f.select :pressure_equipment_directive, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.pressure_equipment_directive || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'pressure_equipment_directive_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.pressure_equipment_directive_doc, field: :pressure_equipment_directive_doc, is_present: @form_data.pressure_equipment_directive == CompanyInformation::YES, id: "pressure_equipment_directive_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.manufactoring_facilities_doc, field: :manufactoring_facilities_doc, is_present: @form_data.manufactoring_facilities == CompanyInformation::YES, id: "manufactoring_facilities_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :quality_assurance_plan, class: "required" %>
-            <%= f.select :quality_assurance_plan, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.quality_assurance_plan || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'quality_assurance_plan_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :underwriters_labs, "Underwriters Laboratories" ,class: "required" %>
+              <%= f.select :underwriters_labs, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.underwriters_labs || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'underwriters_labs_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.underwriters_labs_doc, field: :underwriters_labs_doc, is_present: @form_data.underwriters_labs == CompanyInformation::YES, id: "underwriters_labs_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.quality_assurance_plan_doc, field: :quality_assurance_plan_doc, is_present: @form_data.quality_assurance_plan == CompanyInformation::YES, id: "quality_assurance_plan_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :iso_9001, "ISO 9001", class: "required" %>
-            <%= f.select :iso_9001, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_9001 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_9001_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :customer_approval, "Customer Approval Certificate", class: "required" %>
+              <%= f.select :customer_approval, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.customer_approval || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'customer_approval_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.customer_approval_doc, field: :customer_approval_doc, is_present: @form_data.customer_approval == CompanyInformation::YES, id: "customer_approval_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_9001_doc, field: :iso_9001_doc, is_present: @form_data.iso_9001 == CompanyInformation::YES, id: "iso_9001_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :iso_14000, "ISO 14000", class: "required" %>
-            <%= f.select :iso_14000, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_14000 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_14000_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :sample_test, "Sample Test Certificate", class: "required" %>
+              <%= f.select :sample_test, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.sample_test || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'sample_test_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.sample_test_doc, field: :sample_test_doc, is_present: @form_data.sample_test == CompanyInformation::YES, id: "sample_test_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_14000_doc, field: :iso_14000_doc, is_present: @form_data.iso_14000 == CompanyInformation::YES, id: "iso_14000_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :ohsas, "OHSAS",class: "required" %>
-            <%= f.select :ohsas, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.ohsas || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'ohsas_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :customer_reference, "Customer Reference List", class: "required" %>
+              <%= f.select :customer_reference, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.customer_reference || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'customer_reference_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.customer_reference_doc, field: :customer_reference_doc, is_present: @form_data.customer_reference == CompanyInformation::YES, id: "customer_reference_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.ohsas_doc, field: :ohsas_doc, is_present: @form_data.ohsas == CompanyInformation::YES, id: "ohsas_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :iso_27000, "ISO 27000", class: "required" %>
-            <%= f.select :iso_27000, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.iso_27000 || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'iso_27000_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :incorporation_certificate, "Certificate of Incorporation", class: "required" %>
+              <%= f.select :incorporation_certificate, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.incorporation_certificate || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'incorporation_certificate_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.incorporation_certificate_doc, field: :incorporation_certificate_doc, is_present: @form_data.incorporation_certificate == CompanyInformation::YES, id: "incorporation_certificate_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.iso_27000_doc, field: :iso_27000_doc, is_present: @form_data.iso_27000 == CompanyInformation::YES, id: "iso_27000_uploader" } %>
-        <div id="iso_27000_uploader" class="col-7 <%= @form_data.iso_27000 == CompanyInformation::YES ? '' : 'd-none' %>">
-          <div class="form-group">
-            <%= f.label :iso_27000_doc, class: "required" %>
-            <%= f.file_field :iso_27000_doc, class: "form-control", required: true, disabled: @form_data.iso_27000 != CompanyInformation::YES %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :legal_cases, class: "required" %>
+              <%= f.select :legal_cases, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.legal_cases || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'legal_cases_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.legal_cases_doc, field: :legal_cases_doc, is_present: @form_data.legal_cases == CompanyInformation::YES, id: "legal_cases_uploader" } %>
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :indian_boiler_regulations, class: "required" %>
-            <%= f.select :indian_boiler_regulations, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.indian_boiler_regulations || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'indian_boiler_regulations_uploader'} %>
+        
+        <div class="row">
+          <div class="col-5">
+            <div class="form-group">
+              <%= f.label :annual_turnover, class: "required" %>
+              <%= f.select :annual_turnover, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.annual_turnover || CompanyInformation::YES}, class: "form-control", required: true, data: {id: 'annual_turnover_uploader'} %>
+            </div>
           </div>
+          <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.annual_turnover_doc, field: :annual_turnover_doc, is_present: @form_data.annual_turnover == CompanyInformation::YES, id: "annual_turnover_uploader" } %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.indian_boiler_regulations_doc, field: :indian_boiler_regulations_doc, is_present: @form_data.indian_boiler_regulations == CompanyInformation::YES, id: "indian_boiler_regulations_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :asme, "American Society of Mechanical Engineers", class: "required" %>
-            <%= f.select :asme, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.asme || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'asme_uploader'} %>
-          </div>
+        
+        <div class="form-group">
+          <%= f.hidden_field :vendor_application_id %>
+          <%= f.hidden_field :id %>
+          <%= f.submit "Submit", class: "btn btn-primary px-5 p-2" %>
         </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.asme_doc, field: :asme_doc, is_present: @form_data.asme == CompanyInformation::YES, id: "asme_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :pressure_equipment_directive, class: "required" %>
-            <%= f.select :pressure_equipment_directive, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.pressure_equipment_directive || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'pressure_equipment_directive_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.pressure_equipment_directive_doc, field: :pressure_equipment_directive_doc, is_present: @form_data.pressure_equipment_directive == CompanyInformation::YES, id: "pressure_equipment_directive_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :underwriters_labs, "Underwriters Laboratories" ,class: "required" %>
-            <%= f.select :underwriters_labs, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.underwriters_labs || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'underwriters_labs_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.underwriters_labs_doc, field: :underwriters_labs_doc, is_present: @form_data.underwriters_labs == CompanyInformation::YES, id: "underwriters_labs_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :customer_approval, "Customer Approval Certificate", class: "required" %>
-            <%= f.select :customer_approval, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.customer_approval || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'customer_approval_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.customer_approval_doc, field: :customer_approval_doc, is_present: @form_data.customer_approval == CompanyInformation::YES, id: "customer_approval_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :sample_test, "Sample Test Certificate", class: "required" %>
-            <%= f.select :sample_test, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.sample_test || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'sample_test_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.sample_test_doc, field: :sample_test_doc, is_present: @form_data.sample_test == CompanyInformation::YES, id: "sample_test_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :customer_reference, "Customer Reference List", class: "required" %>
-            <%= f.select :customer_reference, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.customer_reference || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'customer_reference_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.customer_reference_doc, field: :customer_reference_doc, is_present: @form_data.customer_reference == CompanyInformation::YES, id: "customer_reference_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :incorporation_certificate, "Certificate of Incorporation", class: "required" %>
-            <%= f.select :incorporation_certificate, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.incorporation_certificate || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'incorporation_certificate_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.incorporation_certificate_doc, field: :incorporation_certificate_doc, is_present: @form_data.incorporation_certificate == CompanyInformation::YES, id: "incorporation_certificate_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :legal_cases, class: "required" %>
-            <%= f.select :legal_cases, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.legal_cases || CompanyInformation::NO}, class: "form-control", required: true, data: {id: 'legal_cases_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.legal_cases_doc, field: :legal_cases_doc, is_present: @form_data.legal_cases == CompanyInformation::YES, id: "legal_cases_uploader" } %>
-      </div>
-      
-      <div class="row">
-        <div class="col-5">
-          <div class="form-group">
-            <%= f.label :annual_turnover, class: "required" %>
-            <%= f.select :annual_turnover, CompanyInformation::DROPDOWN_OPTIONS, {selected: @form_data.annual_turnover || CompanyInformation::YES}, class: "form-control", required: true, data: {id: 'annual_turnover_uploader'} %>
-          </div>
-        </div>
-        <%= render partial: "uploaded_image", locals: {f: f, file: @form_data.annual_turnover_doc, field: :annual_turnover_doc, is_present: @form_data.annual_turnover == CompanyInformation::YES, id: "annual_turnover_uploader" } %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.hidden_field :vendor_application_id %>
-        <%= f.hidden_field :id %>
-        <%= f.submit "Submit", class: "btn btn-primary px-5 p-2" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div class="d-flex justify-content-between mb-5">
+      <%= link_to 'Prev', previous_wizard_path, class: "btn btn-default" %>
+      <%= link_to 'Next', next_wizard_path, class: "btn btn-primary" %>
+    </div>
   </div>
-<% end %>
+</section>

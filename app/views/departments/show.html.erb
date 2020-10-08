@@ -1,9 +1,21 @@
-<p id="notice"><%= notice %></p>
+<section class="section">
+  <div class="section-header">
+    <h1>Departments</h1>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @department.name %>
-</p>
+  <div class="section body">
+  	<div class="card">
+  		<div class="card-body">
+				<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+				<p>
+				  <strong>Name:</strong>
+				  <%= @department.name %>
+				</p>
+
+				<%= link_to 'Edit', edit_department_path(@department) %> |
+				<%= link_to 'Back', departments_path %>
+  		</div>
+  	</div>
+  </div>
+</section>

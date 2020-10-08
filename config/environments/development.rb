@@ -64,19 +64,5 @@ Rails.application.configure do
   
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
-
-  config.action_mailer.delivery_method = :smtp
-  host = 'localhost' #replace with your own url
-  config.action_mailer.default_url_options = { host: host }
-
-  config.action_mailer.smtp_settings = {
-    port: 587,
-    address: "smtp.gmail.com",
-    user_name: 'test@redkite.co.in',
-    password: 'Delhi07@#',
-    authentication: :plain,
-    enable_starttls_auto: true,
-    domain: 'gmail.com'
-  }
   
 end

@@ -1,8 +1,17 @@
-<div class="page-header pt-3 pb-2">
-  <h2>New Entity</h2>
-</div>
+<section class="section">
+  <div class="section-header">
+    <h1>Create Entity</h1>
+  </div>
 
+  <div class="section body">
+  	<div class="card">
+  		<div class="card-body">
+		  	<div class="text-right mb-3">
+		  		<%= link_to 'Back', entities_path, class: "btn btn-primary" %>
+		  	</div>
 
-<%= render 'form', entity: @entity %>
-
-<%= link_to 'Back', entities_path %>
+				<%= render 'form', entity: @entity %>
+  		</div>
+  	</div>
+	</div>
+</section>

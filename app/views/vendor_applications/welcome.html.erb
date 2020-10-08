@@ -1,18 +1,24 @@
-<%= render layout: "layouts/vendors" do %>
-
-  <div class="page-header pt-3 pb-2">
-    <h2>Welcome</h2>
-  </div>
-  
-  <figure class="card bg-light p-4 my-5">
-    <ul class="mb-0">
-      <li>Please Fill All Mandatory Fields</li>
-      <li>Please upload All the Mandatory Documents</li>
-    </ul>
-  </figure>
-  
-  <div class="d-flex justify-content-between mb-5">
-    <%= link_to 'Next', next_wizard_path, class: "btn btn-primary ml-auto" %>
+<section class="section">
+  <div class="section-header">
+    <h1>Welcome</h1>
   </div>
 
-<% end %>
+  <div class="section-body">
+
+    <div class="card p-4">
+
+      <%= render partial: "wizard_header" %>
+
+      <figure class="card bg-light p-4 my-5">
+        <ul class="mb-0">
+          <li>Please Fill All Mandatory Fields</li>
+          <li>Please upload All the Mandatory Documents</li>
+        </ul>
+      </figure>
+    </div>
+    
+    <div class="d-flex justify-content-between mb-5">
+      <%= link_to 'Next', next_wizard_path, class: "btn btn-primary ml-auto" %>
+    </div>
+  </div>
+</section>

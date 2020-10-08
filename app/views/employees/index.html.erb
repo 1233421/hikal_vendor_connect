@@ -1,52 +1,49 @@
-<%= render layout: "layouts/employees" do %>
-
-  <div class="page-header pt-3 pb-2">
-    <h2>Pending Approvals</h2>
+<section class="section">
+  <div class="section-header">
+    <h1>Pending Approvals</h1>
   </div>
-  
-  <table class="table">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Applied on</th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <% @applications.each do |app| %>
-        <tr>
-          <td><%= app.first_name %></td>
-          <td><%= app.last_name %></td>
-          <td><%= app.updated_at.strftime("%d/%m/%Y") %></td>
-          <td>
-            <%= link_to "Review", "/employees/view_approval/#{app.id}", data: {remote: true, toggle: "modal", target: "#application-review"} %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="application-review" tabindex="-1" aria-labelledby="application-review-label" aria-hidden="true">
-    <div class="modal-dialog modal-xlg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="application-review-label">Review and Approve</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="review-content">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger">Reject</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+  <div class="section-body">
+    <div class="card p-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Applied on</th>
+            <th></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @applications.each do |app| %>
+            <tr>
+              <td><%= app.first_name %></td>
+              <td><%= app.last_name %></td>
+              <td><%= app.updated_at.strftime("%d/%m/%Y") %></td>
+              <td>
+                <%= link_to "Review", "/employees/view_approval/#{app.id}", data: {remote: true, toggle: "modal", target: "#application-review"} %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="application-review" aria-labelledby="application-review-label" aria-hidden="true">
+  <div class="modal-dialog modal-xlg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="application-review-label">Review and Approve</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="review-content">
+        
       </div>
     </div>
   </div>
-
-<% end %>
+</div>

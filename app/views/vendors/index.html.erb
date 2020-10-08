@@ -1,7 +1,36 @@
-<%= render layout: "layouts/vendors" do %>
+<section class="section">
+	<div class="section-header">
+	  <h1>Home</h1>
+	</div>
 
-  <div class="page-header pt-3 pb-2">
-    <h2>Home</h2>
-  </div>
+	<div class="section-body">
+		<div class="row justify-content-sm-center text-center py-10">
+      <div class="col-sm-7 col-md-5">
+        <img class="img-fluid mb-5" src="<%= image_path('graphs.svg') %>" alt="Image Description" style="max-width: 21rem;">
 
-<% end %>
+        <h4>Hello, nice to see you!</h4>
+        <% if current_user.vendor_application.is_approved? %>
+          <p>Congrats!, you are a part of us</p>
+        <% else %>
+          <% if current_user.vendor_application.is_rejected? %>
+            <p>Your Application seems rejected, due to <%= current_user.vendor_application.rejections.last.reason %> </p>
+            <a class="btn btn-primary" href="/vendor_applications/welcome">Fix and Resubmit</a>
+          <% end %>
+
+          <% if current_user.vendor_application.wating_for_first_level? %>
+            <p>Your Application under verification from First Level</p>
+          <% end %>
+
+          <% if current_user.vendor_application.wating_for_second_level? %>
+            <p>Your Application under verification from Second Level</p>
+          <% end %>
+
+          <% unless current_user.general_information.present? %>
+          	<p>Apply for the proposal just click the below link</p>
+          	<a class="btn btn-primary" href="/vendor_applications/welcome">Apply</a>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+	</div>
+</section>

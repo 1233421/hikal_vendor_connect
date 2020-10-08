@@ -1,9 +1,15 @@
 //= require jquery
 //= require jquery_ujs
+//= require popper
 //= require bootstrap
 //= require jquery-validation
 //= require viewer
 //= require jquery-viewer
+//= require stisla
+//= require nice-scroll
+//= require sweet-alert
+//= require scripts
+//= require custom
 //= require_self
 
 
@@ -43,6 +49,13 @@ $(document).ready(function(){
   $(".image-view img").viewer();
 
   $(".gst-enabler").on('change', initGSTfields);
+
+  $('.custom-file-input').on('change',function(e){
+    //get the file name
+    var fileName = e.target.files[0].name;
+    //replace the "Choose a file" label
+    $(this).next('.custom-file-label').html(fileName);
+	})
 })
 
 
@@ -56,4 +69,76 @@ function initGSTfields(){
 	} else {
 		$("#gst_content").addClass('d-none')
 	}
+}
+
+function rejectWithReason(id){
+	swal({ 
+		title: "reason for Rejection", 
+		content: 'input'
+	}).then(function(reason){ 
+		if( !!reason ){
+			$.ajax({
+				url: "/employees/reject",
+				method: 'post',
+				datatype: 'json',
+				data: {
+					id: id,
+					reason: reason
+				},
+				success: function(response){
+					window.location.reload();
+				}
+			})
+		}
+	})
+}
+
+function approve(id){
+	$.ajax({
+		url: "/employees/approve",
+		method: 'post',
+		datatype: 'json',
+		data: {
+			id: id
+		},
+		success: function(response){
+			window.location.reload();
+		}
+	})
+}
+
+function rejectWithReasonByAdmin(id){
+	swal({ 
+		title: "reason for Rejection", 
+		content: 'input'
+	}).then(function(reason){ 
+		if( !!reason ){
+			$.ajax({
+				url: "/admins/reject",
+				method: 'post',
+				datatype: 'json',
+				data: {
+					id: id,
+					reason: reason
+				},
+				success: function(response){
+					window.location.reload();
+				}
+			})
+		}
+	})
+}
+
+function approveByAdmin(id){
+	$.ajax({
+		url: "/admins/approve",
+		method: 'post',
+		datatype: 'json',
+		data: {
+			id: id
+		},
+		success: function(response){
+			window.location.reload();
+		}
+	})
 }

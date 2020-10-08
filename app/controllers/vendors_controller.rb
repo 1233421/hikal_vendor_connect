@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-  
+  layout "vendor"
   before_action :authenticate_vendor
   
   def index
@@ -8,7 +8,10 @@ class VendorsController < ApplicationController
   def submit
     if session[:va].present?
       application = VendorApplication.find(session[:va])
-      application.update( is_submitted_for_approval: true )
+      application.update({
+        is_submitted_for_approval: true,
+        submitted_at: DateTime.now
+      })
     end
   end
   

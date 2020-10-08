@@ -1,7 +1,17 @@
-<div class="page-header pt-3 pb-2">
-  <h2>New Sub Vendor Type</h2>
-</div>
+<section class="section">
+  <div class="section-header">
+    <h1>New Sub Vendor Type</h1>
+  </div>
 
-<%= render 'form', sub_vendor_type: @sub_vendor_type %>
+  <div class="section body">
+  	<div class="card">
+  		<div class="card-body">
+		  	<div class="text-right mb-3">
+		  		<%= link_to 'Back', sub_vendor_types_path, class: "btn btn-primary" %>
+		  	</div>
 
-<%= link_to 'Back', sub_vendor_types_path %>
+				<%= render 'form', sub_vendor_type: @sub_vendor_type %>
+  		</div>
+  	</div>
+	</div>
+</section>

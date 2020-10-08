@@ -4,14 +4,23 @@
     <div class="d-flex">
       <% if file.attached? %>
 	      <div class="col-6 image-view image-attached">
-	      	<div>
-			      <%= image_tag url_for(file), style: "width: 100px;height: 100px" %>
-				    <a href="javascript:void(0)" onclick="$(this).closest('.image-view').removeClass('image-attached')" class="btn btn-danger">Change</a>
+	      	<div class="card">
+            <div class="row">
+              <div class="col-6">
+		            <%= image_tag url_for(file), style: "width: 100px;height: 100px", class: "card-img" %>
+              </div>
+              <div class="col-6">
+                <div class="card-body">
+                  <a href="javascript:void(0)" onclick="$(this).closest('.image-view').removeClass('image-attached')" class="btn btn-danger">Change</a>
+                </div>
+              </div>
+            </div>
 	      	</div>
 			  </div>
 			<% end %>
-      <div class="col-6 image-field">
-        <%= f.file_field field, class: "form-control", required: true, disabled: !is_present %>
+      <div class="col-6 image-field custom-file">
+        <%= f.file_field field, class: "custom-file-input", required: true, disabled: !is_present %>
+        <%= f.label field, class: "custom-file-label" %>
       </div>
     </div>
   </div>

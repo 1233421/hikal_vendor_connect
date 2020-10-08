@@ -1,46 +1,84 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>HikalVendorConnect</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <div class="container my-3 content">
-      <div class="row">
-        <aside class="col-3">
-          <h1 class="logo my-5">Hikal</h1>
-          <nav>
-            <ul class="ml-0 pl-3 list-unstyled list-group">
-              <li class="list-group-item <%= current_page?(departments_path) ? "active" : "" %>">
-                <a href="<%= departments_path %>" >Department</a>
+    <div id="app">
+      <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+          <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            </ul>
+          </form>
+          <ul class="navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <div class="d-sm-none d-lg-inline-block">Hi, <%= current_user.first_name %></div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="<%= destroy_user_session_path %>" data-method="delete" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="main-sidebar sidebar-style-2" tabindex="1" style="overflow: hidden; outline: none;">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="/">Hikal</a>
+            </div>
+
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="index.html">Hikal</a>
+            </div>
+
+            <ul class="sidebar-menu">
+              <li class="<%= current_page?('/admins') ? "active" : "" %>">
+                <a class="nav-link" href="/admins">
+                  <i class="far fa-square"></i> <span>Pending Approvals</span>
+                </a>
+              </li>
+
+              <li class="<%= current_page?(departments_path) ? "active" : "" %>">
+                <a class="nav-link" href="<%= departments_path %>">
+                  <i class="far fa-square"></i> <span>Department</span>
+                </a>
               </li>
               
-              <li class="list-group-item  <%= current_page?(entities_path) ? "active" : "" %>">
-                <a href="<%= entities_path %>">Entities</a>
+              <li class=" <%= current_page?(entities_path) ? "active" : "" %>">
+                <a class="nav-link" href="<%= entities_path %>">
+                  <i class="far fa-square"></i> <span>Entities</span>
+                </a>
               </li>
               
-              <li class="list-group-item <%= current_page?(vendor_types_path) ? "active" : "" %>">
-                <a href="<%= vendor_types_path %>">Vendor Types</a>
+              <li class="<%= current_page?(vendor_types_path) ? "active" : "" %>">
+                <a class="nav-link" href="<%= vendor_types_path %>">
+                  <i class="far fa-square"></i> <span>Vendor Types</span>
+                </a>
               </li>
               
-              <li class="list-group-item <%= current_page?(sub_vendor_types_path) ? "active" : "" %>">
-                <a href="<%= sub_vendor_types_path %>">Sub Vendor Type</a>
-              </li>
-              <li class="list-group-item">
-                <a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
+              <li class="<%= current_page?(sub_vendor_types_path) ? "active" : "" %>">
+                <a class="nav-link" href="<%= sub_vendor_types_path %>">
+                  <i class="far fa-square"></i> <span>Vendor Sub Types</span>
+                </a>
               </li>
             </ul>
-          </nav>
-        </aside>
-        <div class="col-9">
-          <div id="main-content">
-            <%= yield %>
-          </div>
+          </aside>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" style="min-height: 886px;">
+          <%= yield %>
         </div>
       </div>
     </div>

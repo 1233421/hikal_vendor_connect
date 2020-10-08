@@ -3,9 +3,9 @@ class CreateVendorApplication < ActiveRecord::Migration[6.0]
     create_table :vendor_applications do |t|
       t.belongs_to :user
       t.string :current_step
-      t.boolean :is_submitted_for_approval
-      t.boolean :is_approved_by_first_level
-      t.boolean :is_approved_by_second_level
+      t.boolean :is_submitted_for_approval, default: false
+      t.boolean :is_approved_by_first_level, default: false
+      t.boolean :is_approved_by_second_level, default: false
       t.timestamps
     end
     
